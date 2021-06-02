@@ -10,6 +10,10 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 375px) {
+    padding: 30px 16px;
+  }
 `
 
 export default Header

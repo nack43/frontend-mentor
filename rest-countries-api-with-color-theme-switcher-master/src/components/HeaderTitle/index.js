@@ -7,6 +7,10 @@ const HeaderTitle = styled.div`
   line-height: 33px;
 
   color: ${({ theme }) => theme.text};
+
+  @media (max-width: 375px) {
+    font-size: 14px;
+  }
 `
 
 export default HeaderTitle
