@@ -8,7 +8,12 @@ import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import Layout from '../components/Layout'
 import HeaderTitle from '../components/HeaderTitle'
-import { Items, Contents, SearchHeader } from '../components/home/style'
+import {
+  Items,
+  Contents,
+  SearchHeader,
+  LoadingText
+} from '../components/home/style'
 import { lightTheme, darkTheme } from '../styles/theme'
 import ThemeContext from '../contexts/ThemeContext'
 import { API_BASE_URL } from '../utils/constants'
@@ -85,7 +90,7 @@ export default function Home({ allCountries }) {
           </SearchHeader>
 
           <Items>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <LoadingText>Loading...</LoadingText>}
 
             {!isLoading &&
               countries &&

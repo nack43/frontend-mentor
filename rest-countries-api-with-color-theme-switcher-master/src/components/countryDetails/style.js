@@ -4,6 +4,11 @@ export const Flag = styled.img`
   max-width: 560px;
   height: 401px;
   object-fit: cover;
+
+  @media (max-width: 375px) {
+    max-width: 320px;
+    height: 229px;
+  }
 `
 
 export const Contents = styled.div`
@@ -11,6 +16,12 @@ export const Contents = styled.div`
   height: 100vh;
   padding: 48px 80px;
   background: ${({ theme }) => theme.background};
+
+  @media (max-width: 375px) {
+    padding: 48px 27px;
+    display: flex;
+    flex-direction: column;
+  }
 `
 export const Name = styled.p`
   font-size: 32px;
@@ -83,6 +94,11 @@ export const BackButton = styled.div`
   cursor: pointer;
   background: ${({ theme }) => theme.elements};
   border-radius: 6px;
+
+  @media (max-width: 375px) {
+    width: 104px;
+    min-height: 32px;
+  }
 `
 export const Space = styled.div`
   ${({ w }) => {

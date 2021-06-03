@@ -4,8 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 480px;
   width: 480px;
-  min-width: 480px;
   height: 56px;
   background: ${({ theme }) => theme.elements};
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);

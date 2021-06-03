@@ -6,12 +6,21 @@ export const Items = styled.div`
   grid-column-gap: 75px;
   grid-template-columns: repeat(auto-fill, 264px);
   width: 100%;
+
+  @media (max-width: 375px) {
+    gap: 40px;
+    place-content: center;
+  }
 `
 
 export const Contents = styled.div`
   width: 100vw;
   padding: 48px 80px;
   background: ${({ theme }) => theme.background};
+
+  @media (max-width: 375px) {
+    padding: 24px 16px;
+  }
 `
 
 export const SearchHeader = styled.div`
@@ -23,4 +32,12 @@ export const SearchHeader = styled.div`
   margin-bottom: 48px;
   flex-wrap: wrap;
   gap: 8px;
+
+  @media (max-width: 375px) {
+    gap: 40px;
+  }
+`
+
+export const LoadingText = styled.p`
+  color: ${({ theme }) => theme.text};
 `
