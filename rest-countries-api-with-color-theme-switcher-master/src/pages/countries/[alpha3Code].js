@@ -26,6 +26,7 @@ import Layout from '../../components/Layout'
 import ThemeSwitcher from '../../components/ThemeSwitcher'
 import ThemeContext from '../../contexts/ThemeContext'
 import { lightTheme, darkTheme } from '../../styles/theme'
+import { API_BASE_URL } from '../../utils/constants'
 
 export default function Home({ country, borderCountries }) {
   const router = useRouter()
@@ -133,14 +134,14 @@ export default function Home({ country, borderCountries }) {
 
 export async function getServerSideProps(context) {
   const res = await axios.get(
-    `https://restcountries.eu/rest/v2/alpha/${context.params.alpha3Code.toLowerCase()}`
+    `${API_BASE_URL}/alpha/${context.params.alpha3Code.toLowerCase()}`
   )
 
   const borderCountries = []
   if (res.data.borders.length > 0) {
     for (const code of res.data.borders) {
       const res2 = await axios.get(
-        `https://restcountries.eu/rest/v2/alpha/${code.toLowerCase()}`
+        `${API_BASE_URL}/alpha/${code.toLowerCase()}`
       )
       borderCountries.push(res2.data.name)
     }

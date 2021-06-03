@@ -12,3 +12,5 @@ export const Color = {
   // - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
   WHITE: 'hsl(0, 0%, 100%)'
 }
+
+export const API_BASE_URL = 'https://restcountries.eu/rest/v2'

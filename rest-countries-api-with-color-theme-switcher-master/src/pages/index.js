@@ -11,6 +11,7 @@ import HeaderTitle from '../components/HeaderTitle'
 import { Items, Contents, SearchHeader } from '../components/home/style'
 import { lightTheme, darkTheme } from '../styles/theme'
 import ThemeContext from '../contexts/ThemeContext'
+import { API_BASE_URL } from '../utils/constants'
 
 export default function Home({ allCountries }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,7 +26,7 @@ export default function Home({ allCountries }) {
       try {
         setIsLoading(true)
         const res = await axios.get(
-          `https://restcountries.eu/rest/v2/region/${selectedRegion.toLowerCase()}`
+          `${API_BASE_URL}/region/${selectedRegion.toLowerCase()}`
         )
         setCountries(res.data)
       } catch (ex) {
@@ -43,7 +44,7 @@ export default function Home({ allCountries }) {
       try {
         setIsLoading(true)
         const res = await axios.get(
-          `https://restcountries.eu/rest/v2/name/${query.toLowerCase()}`
+          `${API_BASE_URL}/name/${query.toLowerCase()}`
         )
         setCountries(res.data)
       } catch (ex) {
@@ -103,7 +104,7 @@ export default function Home({ allCountries }) {
 }
 
 export async function getStaticProps() {
-  const res = await axios.get('https://restcountries.eu/rest/v2/all')
+  const res = await axios.get(`${API_BASE_URL}/all`)
   return {
     props: { allCountries: res.data }
   }
