@@ -1,4 +1,3 @@
-import { ThemeProvider } from 'styled-components'
 import Header from '../components/Header'
 import Item from '../components/Item'
 import SearchInput from '../components/SearchInput'
@@ -14,7 +13,6 @@ import {
   SearchHeader,
   LoadingText
 } from '../components/home/style'
-import { lightTheme, darkTheme } from '../styles/theme'
 import ThemeContext from '../contexts/ThemeContext'
 import { API_BASE_URL } from '../utils/constants'
 
@@ -63,48 +61,46 @@ export default function Home({ allCountries }) {
   }, [query])
 
   return (
-    <ThemeProvider theme={theme.isDarkMode ? darkTheme : lightTheme}>
-      <Layout>
-        <Header>
-          <HeaderTitle>Where in the world?</HeaderTitle>
+    <Layout>
+      <Header>
+        <HeaderTitle>Where in the world?</HeaderTitle>
 
-          <ThemeSwitcher
+        <ThemeSwitcher
+          isDarkMode={theme.isDarkMode}
+          onClick={theme.toggleTheme}
+        />
+      </Header>
+
+      <Contents>
+        <SearchHeader>
+          <SearchInput
             isDarkMode={theme.isDarkMode}
-            onClick={theme.toggleTheme}
+            onChange={(e) => setQuery(e.target.value)}
           />
-        </Header>
+          <FilterBox
+            isDarkMode={theme.isDarkMode}
+            isOpen={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            text={selectedRegion}
+            onSelect={setSelectedRegion}
+          />
+        </SearchHeader>
 
-        <Contents>
-          <SearchHeader>
-            <SearchInput
-              isDarkMode={theme.isDarkMode}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <FilterBox
-              isDarkMode={theme.isDarkMode}
-              isOpen={isOpen}
-              onToggle={() => setIsOpen(!isOpen)}
-              text={selectedRegion}
-              onSelect={setSelectedRegion}
-            />
-          </SearchHeader>
+        <Items>
+          {isLoading && <LoadingText>Loading...</LoadingText>}
 
-          <Items>
-            {isLoading && <LoadingText>Loading...</LoadingText>}
+          {!isLoading &&
+            countries &&
+            countries.map((country) => {
+              return <Item key={country.name} country={country} />
+            })}
 
-            {!isLoading &&
-              countries &&
-              countries.map((country) => {
-                return <Item key={country.name} country={country} />
-              })}
-
-            {!isLoading && countries && countries.length === 0 && (
-              <p>no countries found</p>
-            )}
-          </Items>
-        </Contents>
-      </Layout>
-    </ThemeProvider>
+          {!isLoading && countries && countries.length === 0 && (
+            <p>no countries found</p>
+          )}
+        </Items>
+      </Contents>
+    </Layout>
   )
 }
 
