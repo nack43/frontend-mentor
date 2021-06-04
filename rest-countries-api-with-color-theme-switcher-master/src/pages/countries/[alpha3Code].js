@@ -14,11 +14,13 @@ import {
   Column,
   BorderCountries,
   Row,
-  InfoRow,
+  Details,
   BorderCountry,
+  BorderCountriesWrapper,
   RowContents,
   Space,
-  BackButton
+  BackButton,
+  BetweenFlatAndDetails
 } from '../../components/countryDetails/style'
 import Header from '../../components/Header'
 import HeaderTitle from '../../components/HeaderTitle'
@@ -43,6 +45,7 @@ export default function Home({ country, borderCountries }) {
     { label: 'Sub Region', value: country.subregion },
     { label: 'Capital', value: country.capital }
   ]
+
   const arr2 = [
     { label: 'Top Level Domain', value: country.topLevelDomain },
     {
@@ -78,16 +81,16 @@ export default function Home({ country, borderCountries }) {
             <Space w={8} />
             <Text>Back</Text>
           </BackButton>
-          <Space h={80} />
 
           <RowContents>
             <Flag src={country.flag} alt={country.name} />
-            <Space w={80} />
+
+            <BetweenFlatAndDetails />
 
             <DetailsColumn>
               <Column>
                 <Name>{country.name}</Name>
-                <InfoRow>
+                <Details>
                   <InfoColumn>
                     {arr1.map((e) => {
                       return (
@@ -108,10 +111,10 @@ export default function Home({ country, borderCountries }) {
                       )
                     })}
                   </InfoColumn>
-                </InfoRow>
+                </Details>
               </Column>
 
-              <Row>
+              <BorderCountriesWrapper>
                 <TextWrapper>
                   <Text fw={600}>Border Countries: </Text>
                 </TextWrapper>
@@ -119,11 +122,19 @@ export default function Home({ country, borderCountries }) {
                   {borderCountries.length === 0 && (
                     <Text fw={300}>No Border Countries</Text>
                   )}
-                  {borderCountries.map((e) => {
-                    return <BorderCountry>{e}</BorderCountry>
+                  {borderCountries.map((country) => {
+                    return (
+                      <BorderCountry
+                        onClick={() =>
+                          router.push(`/countries/${country.alpha3Code}`)
+                        }
+                      >
+                        {country.name}
+                      </BorderCountry>
+                    )
                   })}
                 </BorderCountries>
-              </Row>
+              </BorderCountriesWrapper>
             </DetailsColumn>
           </RowContents>
         </Contents>
@@ -138,12 +149,16 @@ export async function getServerSideProps(context) {
   )
 
   const borderCountries = []
+
   if (res.data.borders.length > 0) {
     for (const code of res.data.borders) {
       const res2 = await axios.get(
         `${API_BASE_URL}/alpha/${code.toLowerCase()}`
       )
-      borderCountries.push(res2.data.name)
+      borderCountries.push({
+        name: res2.data.name,
+        alpha3Code: res2.data.alpha3Code
+      })
     }
   }
 

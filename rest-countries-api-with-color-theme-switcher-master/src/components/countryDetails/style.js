@@ -11,6 +11,14 @@ export const Flag = styled.img`
   }
 `
 
+export const BetweenFlatAndDetails = styled.div`
+  width: 80px;
+
+  @media (max-width: 375px) {
+    width: unset;
+  }
+`
+
 export const Contents = styled.div`
   width: 100vw;
   height: 100vh;
@@ -21,8 +29,10 @@ export const Contents = styled.div`
     padding: 48px 27px;
     display: flex;
     flex-direction: column;
+    height: unset;
   }
 `
+
 export const Name = styled.p`
   font-size: 32px;
   font-weight: 800;
@@ -54,8 +64,15 @@ export const DetailsColumn = styled(Column)`
 export const InfoColumn = styled(Column)`
   gap: 12px;
 `
-export const InfoRow = styled(Row)`
+export const Details = styled(Row)`
   justify-content: space-between;
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 32px;
+  }
 `
 
 export const Text = styled.p`
@@ -94,10 +111,12 @@ export const BackButton = styled.div`
   cursor: pointer;
   background: ${({ theme }) => theme.elements};
   border-radius: 6px;
+  margin-bottom: 80px;
 
   @media (max-width: 375px) {
     width: 104px;
     min-height: 32px;
+    margin-bottom: 64px;
   }
 `
 export const Space = styled.div`
@@ -112,4 +131,15 @@ export const Space = styled.div`
 
 export const TextWrapper = styled.div`
   min-width: 150px;
+`
+
+export const BorderCountriesWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 34px;
+  }
 `
