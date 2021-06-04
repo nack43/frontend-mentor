@@ -1,10 +1,10 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheet } from 'styled-components';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps }
   }
 
   render() {
@@ -21,24 +21,24 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
 MyDocument.getInitialProps = async (ctx) => {
-  const styledComponentSheet = new ServerStyleSheet();
-  const originalRenderPage = ctx.renderPage;
+  const styledComponentSheet = new ServerStyleSheet()
+  const originalRenderPage = ctx.renderPage
 
   try {
     ctx.renderPage = () =>
       originalRenderPage({
         enhanceApp: (App) => (props) =>
           styledComponentSheet.collectStyles(
-            materialSheet.collect(<App {...props} />),
-          ),
-      });
+            materialSheet.collect(<App {...props} />)
+          )
+      })
 
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await Document.getInitialProps(ctx)
 
     return {
       ...initialProps,
@@ -47,13 +47,12 @@ MyDocument.getInitialProps = async (ctx) => {
         <React.Fragment key="styles">
           {initialProps.styles}
           {styledComponentSheet.getStyleElement()}
-        </React.Fragment>,
-      ],
-    };
+        </React.Fragment>
+      ]
+    }
   } finally {
-    styledComponentSheet.seal();
+    styledComponentSheet.seal()
   }
-};
+}
 
-export default MyDocument;
-export default MyDocument;
+export default MyDocument
