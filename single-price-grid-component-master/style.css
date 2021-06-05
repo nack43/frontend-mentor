@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 100%;
+  height: 100%;
 }
 
 *, *::before, *::after {
@@ -13,6 +14,11 @@ body {
   color: var(--grayblue);
   background-color: var(--ltgray);
   padding: var(--paddingX);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 :root {
