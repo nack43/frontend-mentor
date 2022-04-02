@@ -6,7 +6,7 @@ import { ThanksCard } from "../organisms/ThanksCard";
 import React, { useState } from "react";
 
 export const Home = () => {
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(true);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   return (
     <div className={styles.container}>
@@ -17,7 +17,11 @@ export const Home = () => {
       </Head>
 
       <main className={styles.main}>
-        {isSubmitted ? <ThanksCard /> : <Card />}
+        {isSubmitted ? (
+          <ThanksCard />
+        ) : (
+          <Card onButtonClick={() => setIsSubmitted(true)} />
+        )}
       </main>
     </div>
   );

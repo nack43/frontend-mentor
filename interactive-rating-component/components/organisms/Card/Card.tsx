@@ -6,7 +6,11 @@ import { Typography } from "../../atoms/Typography";
 import { IconInCircle } from "../../atoms/IconInCircle";
 import StarIcon from "../../../public/images/icon-star.svg";
 
-export const Card = () => {
+interface CardProps {
+  onButtonClick: () => void;
+}
+
+export const Card = ({ onButtonClick }: CardProps) => {
   const [selectedNum, setSelectedNum] = useState(0);
 
   return (
@@ -19,7 +23,7 @@ export const Card = () => {
         size="s"
       />
       <Numbers selectedNum={selectedNum} setSelectedNum={setSelectedNum} />
-      <Button />
+      <Button onClick={onButtonClick} />
     </div>
   );
 };
