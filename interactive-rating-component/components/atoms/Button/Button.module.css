@@ -1,0 +1,16 @@
+.button {
+  width: 100%;
+  color: var(--white);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: var(--orange);
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.button:active,
+.button:hover {
+  color: var(--orange);
+  background-color: var(--white);
+}

@@ -1,0 +1,9 @@
+.small-button {
+  color: var(--orange);
+  font-size: 15px;
+  padding: 4px 20px;
+  background-color: var(--dark-blue);
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+}

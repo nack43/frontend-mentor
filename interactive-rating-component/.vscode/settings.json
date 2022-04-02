@@ -1,0 +1,13 @@
+{
+  // enable globally (here: format on save)
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true,
+    "source.addMissingImports": true
+  },
+  // prevent double check
+  "css.validate": false
+}

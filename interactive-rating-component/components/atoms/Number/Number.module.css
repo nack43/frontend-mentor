@@ -1,0 +1,32 @@
+.number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--dark-blue);
+  color: var(--medium-grey);
+}
+
+/* mobile */
+@media (max-width: 376px) {
+  .number {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.number:hover {
+  background-color: var(--orange);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.number:active {
+  background-color: var();
+  color: var(--white);
+}
+
+.bg-light-grey {
+  background-color: var(--light-grey);
+  color: var(--white);
+}

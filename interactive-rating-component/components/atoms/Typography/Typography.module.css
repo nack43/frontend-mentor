@@ -1,0 +1,27 @@
+.s {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.m {
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 28px;
+}
+
+.white {
+  color: var(--white);
+}
+
+.light-grey {
+  color: var(--light-grey);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
